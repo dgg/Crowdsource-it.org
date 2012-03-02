@@ -66,6 +66,24 @@
     <Reference Include="Pandora">
       <HintPath>..\..\packages\Cassette.1.1.0\lib\net40-Client\Pandora.dll</HintPath>
     </Reference>
+    <Reference Include="ServiceStack">
+      <HintPath>..\..\packages\ServiceStack.3.6.0\lib\net35\ServiceStack.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Common">
+      <HintPath>..\..\packages\ServiceStack.Common.3.5.5\lib\net35\ServiceStack.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.FluentValidation.Mvc3">
+      <HintPath>..\..\packages\ServiceStack.Mvc.3.5.5\lib\net4\ServiceStack.FluentValidation.Mvc3.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Interfaces">
+      <HintPath>..\..\packages\ServiceStack.Common.3.5.5\lib\net35\ServiceStack.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.ServiceInterface">
+      <HintPath>..\..\packages\ServiceStack.3.6.0\lib\net35\ServiceStack.ServiceInterface.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Text">
+      <HintPath>..\..\packages\ServiceStack.Text.3.5.7\lib\net35\ServiceStack.Text.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Web.Helpers, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System" />
@@ -81,6 +99,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Api\CountryService.cs" />
+    <Compile Include="Api\Messages\Countries.cs" />
+    <Compile Include="Api\Messages\CountriesResponse.cs" />
+    <Compile Include="Api\Messages\Country.cs" />
+    <Compile Include="Api\Messages\CountryResponse.cs" />
+    <Compile Include="Api\Resources\Country.cs" />
+    <Compile Include="App_Start\AppHost.cs" />
     <Compile Include="CassetteConfiguration.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -95,6 +120,7 @@
     <Content Include="Content\images\glyphicons-halflings.png" />
     <Content Include="Global.asax" />
     <Content Include="README.jQuery.vsdoc.txt" />
+    <Content Include="README.txt" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\jquery-1.7.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />

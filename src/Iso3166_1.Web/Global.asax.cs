@@ -12,7 +12,9 @@ namespace Iso3166_1.Crowdsource_it.org.Web
 
 		public static void RegisterRoutes(RouteCollection routes)
 		{
+			routes.IgnoreRoute("api/{*pathInfo}"); 
 			routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+			routes.IgnoreRoute("{*favicon}", new { favicon = @"(.*/)?favicon.ico(/.*)?" });
 
 			routes.MapRoute(
 				"Default", // Route name
