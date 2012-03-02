@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace Iso3661_1.Crowdsource_it.org.Web.Controllers
+namespace Iso3166_1.Crowdsource_it.org.Web.Controllers
 {
 	public class HomeController : Controller
 	{
@@ -11,7 +11,7 @@ namespace Iso3661_1.Crowdsource_it.org.Web.Controllers
 			return View();
 		}
 
-		public ActionResult About()
+		public ActionResult Demo()
 		{
 			return View();
 		}

@@ -1,7 +1,7 @@
 ﻿using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace Iso3661_1.Crowdsource_it.org.Web
+namespace Iso3166_1.Crowdsource_it.org.Web
 {
 	public class MvcApplication : System.Web.HttpApplication
 	{

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Iso3661_1.Web", "src\Iso3661_1.Web\Iso3661_1.Web.csproj", "{208BBF2A-A726-4412-B85F-C4798FE326F7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Iso3166_1.Web", "src\Iso3166_1.Web\Iso3166_1.Web.csproj", "{208BBF2A-A726-4412-B85F-C4798FE326F7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
