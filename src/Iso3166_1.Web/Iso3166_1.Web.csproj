@@ -100,6 +100,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Api\CountryService.cs" />
+    <Compile Include="Api\Infrastructure\PrepareCountryQueryAttribute.cs" />
     <Compile Include="Api\Messages\Countries.cs" />
     <Compile Include="Api\Messages\CountriesResponse.cs" />
     <Compile Include="Api\Messages\Country.cs" />
