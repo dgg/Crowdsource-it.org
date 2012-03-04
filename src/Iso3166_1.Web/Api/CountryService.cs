@@ -1,13 +1,18 @@
-﻿using Iso3166_1.Crowdsource_it.org.Web.Api.Messages;
+﻿using System.Data;
+using System.Globalization;
+using Iso3166_1.Crowdsource_it.org.Web.Api.Infrastructure;
+using Iso3166_1.Crowdsource_it.org.Web.Models;
 using ServiceStack.ServiceHost;
 
 namespace Iso3166_1.Crowdsource_it.org.Web.Api
 {
-	public class CountryService : IService<Countries>, IService<Country>
+	public class CountryService : IService<Messages.Countries>, IService<Messages.Country>
 	{
-		public object Execute(Countries request)
+		public IDbConnection Db { get; set; }
+
+		public object Execute(Messages.Countries request)
 		{
-			return new CountriesResponse
+			return new Messages.CountriesResponse
 			{
 				Countries = new[]
 				{
@@ -17,9 +22,21 @@ namespace Iso3166_1.Crowdsource_it.org.Web.Api
 			};
 		}
 
-		public object Execute(Country request)
+		public object Execute(Messages.Country request)
 		{
-			return new Resources.Country {Alpha2_Code = request.Code, Alpha3_Code = "DKK", Numeric_Code = 208, Name = "Denmark"};
+			using (Db)
+			{
+				Db.Open();
+				Country model = Db.Country(request.Code, CultureInfo.GetCultureInfo("en"));
+				
+				return model.ToResponse(() => new Resources.Country
+				{
+					Alpha2_Code = model.Alpha2,
+					Alpha3_Code = model.Alpha3,
+					Numeric_Code = model.Numeric,
+					Name = model.Translation.Name
+				});
+			}
 		}
 	}
 }

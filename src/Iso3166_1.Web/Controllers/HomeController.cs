@@ -6,8 +6,6 @@ namespace Iso3166_1.Crowdsource_it.org.Web.Controllers
 	{
 		public ActionResult Index()
 		{
-			ViewBag.Message = "Welcome to ASP.NET MVC!";
-
 			return View();
 		}
 

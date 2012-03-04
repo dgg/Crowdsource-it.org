@@ -1,7 +1,6 @@
 using System.Web.Mvc;
 using Iso3166_1.Crowdsource_it.org.Web.Api;
-using ServiceStack.CacheAccess;
-using ServiceStack.CacheAccess.Providers;
+using Iso3166_1.Crowdsource_it.org.Web.Api.Infrastructure;
 using ServiceStack.Mvc;
 using ServiceStack.WebHost.Endpoints;
 
@@ -24,8 +23,7 @@ namespace Iso3166_1.Crowdsource_it.org.Web.App_Start
 				DebugMode = true, //Show StackTraces in responses in development
 			});
 
-			container.Register<ICacheClient>(new MemoryCacheClient());
-			//container.Register<ISessionFactory>(c => new SessionFactory(c.Resolve<ICacheClient>()));
+			new Registry().Register(container);
 
 			//Set MVC to use the same Funq IOC as ServiceStack
 			ControllerBuilder.Current.SetControllerFactory(new FunqControllerFactory(container));

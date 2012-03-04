@@ -3,6 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Iso3166_1.Web", "src\Iso3166_1.Web\Iso3166_1.Web.csproj", "{208BBF2A-A726-4412-B85F-C4798FE326F7}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sql", "sql", "{90BE7A66-C741-4F26-B621-B926968E336B}"
+	ProjectSection(SolutionItems) = preProject
+		sql\Iso3166_1.sql = sql\Iso3166_1.sql
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

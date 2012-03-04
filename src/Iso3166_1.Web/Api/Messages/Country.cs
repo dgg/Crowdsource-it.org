@@ -1,5 +1,4 @@
-﻿using System.Globalization;
-using Iso3166_1.Crowdsource_it.org.Web.Api.Infrastructure;
+﻿using Iso3166_1.Crowdsource_it.org.Web.Api.Infrastructure;
 using ServiceStack.ServiceHost;
 
 namespace Iso3166_1.Crowdsource_it.org.Web.Api.Messages
@@ -10,12 +9,5 @@ namespace Iso3166_1.Crowdsource_it.org.Web.Api.Messages
 	public class Country
 	{
 		public string Code { get; set; }
-
-		public bool IsNumeric()
-		{
-			short numericCode;
-			bool parsed = short.TryParse(Code, NumberStyles.Integer, CultureInfo.InvariantCulture, out numericCode);
-			return parsed && numericCode > 0;
-		}
 	}
 }

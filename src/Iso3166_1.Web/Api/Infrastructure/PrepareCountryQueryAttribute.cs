@@ -12,7 +12,7 @@ namespace Iso3166_1.Crowdsource_it.org.Web.Api.Infrastructure
 			var msg = requestDto as Country;
 			if (msg == null ||
 				string.IsNullOrEmpty(msg.Code) ||
-				(!msg.IsNumeric() && (msg.Code.Length < 2 || msg.Code.Length > 3)))
+				msg.Code.Length != 2)
 			{
 				res.StatusCode = (int)HttpStatusCode.BadRequest;
 				res.End();
