@@ -8,6 +8,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sql", "sql", "{90BE7A66-C74
 		sql\Iso3166_1.sql = sql\Iso3166_1.sql
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8FA7A1EA-52DB-40BC-96C5-8EE10C1A1E94}"
+	ProjectSection(SolutionItems) = preProject
+		iso3166_1.xlsx = iso3166_1.xlsx
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

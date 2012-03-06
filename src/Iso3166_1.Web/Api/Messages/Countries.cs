@@ -3,5 +3,6 @@
 	// the route is registered in the AppHost
 	public class Countries
 	{
+		public string Language { get; set; }
 	}
 }

@@ -1,6 +1,24 @@
 ﻿@{
 	ViewBag.Title = "Crowdsource-it :: ISO 3166-1 :: Demo";
-}
 
-<h1>Bootstrap starter template</h1>
-<p>Use this document as a way to quick start any new project.<br> All you get is this message and a barebones HTML document.</p>
+	Bundles.Reference("scripts/pages/Demo.js");
+}
+<div class="container">
+	<section id="intro">
+		<h1>Some Demo code</h1>
+		<p>Usage of the <code>/api/countries/{language}</code> and <code>/api/country/{code}</code> services, both consumed server-side and client.side.</p>
+		<br/>
+	</section>
+	<section id="demo">
+		<div class="tabbable tabs-left">
+			<ul class="nav nav-tabs">
+				<li class="active"><a href="#server" data-toggle="tab">Server</a></li>
+				<li><a href="#client" data-toggle="tab">Client</a></li>
+			</ul>
+			<div class="tab-content">
+				@Html.Partial("_DemoServerTab", Tuple.Create((IEnumerable<SelectListItem>)ViewBag.Countries, (string)@ViewBag.Country))
+				@Html.Partial("_DemoClientTab")
+			</div>
+		</div>
+	</section>
+</div>

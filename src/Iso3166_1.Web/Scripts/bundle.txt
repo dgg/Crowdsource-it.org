@@ -1,0 +1,4 @@
+﻿jquery-1.7.1.js
+jquery.validate.js
+jquery.validate.unobtrusive.js
+*

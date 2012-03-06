@@ -1,0 +1,26 @@
+﻿<div class="tab-pane" id="client">
+	<div class="form-horizontal">
+		<fieldset>
+			<div class="control-group">
+				<label class="control-label" for="countries_fr">Countries in French</label>
+				<div class="controls">
+					<select id="countries_fr" data-src="@ViewBag.UrlForCountries" class="span2"></select>
+					<p class="help-block">Ordered by name</p>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="txtCode">A Single Country</label>
+				<div class="controls">
+					<input id="txtCode" class="input-mini" type="text" placeholder="alpha 2" maxlength="2">
+					<button class="btn btn-primary" href="#" id="btnQuery" data-src="@ViewBag.UrlForCountry">Query</button><br />
+					<p class="help-block">In French</p>
+				</div>
+			</div>
+			<div class="control-group">
+				<div class="controls">
+					<textarea id="txaCountry" class="input-xxlarge" rows="3"></textarea>
+				</div>
+			</div>
+		</fieldset>
+	</div>
+</div>

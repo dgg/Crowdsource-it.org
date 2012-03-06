@@ -28,6 +28,7 @@ namespace Iso3166_1.Crowdsource_it.org.Web.App_Start
 			//Set MVC to use the same Funq IOC as ServiceStack
 			ControllerBuilder.Current.SetControllerFactory(new FunqControllerFactory(container));
 
+			Routes.Add<Api.Messages.Countries>("/countries/{language}", "GET");
 			Routes.Add<Api.Messages.Countries>("/countries", "GET");
 		}
 

@@ -1,0 +1,21 @@
+﻿@model Tuple<IEnumerable<SelectListItem>, string>
+<div class="tab-pane active" id="server">
+	<div class="form-horizontal">
+		<fieldset>
+			<div class="control-group">
+				<label class="control-label" for="countries_en">Countries in English</label>
+				<div class="controls">
+					@Html.DropDownList("countries_en", Model.Item1, new { @class = "span2" })
+					<p class="help-block">Ordered by name</p>
+				</div>
+			</div>
+			<div class="control-group @(string.IsNullOrEmpty(Model.Item2) ? "error" : "success")">
+				<label class="control-label" for="country_en">A Single Country</label>
+				<div class="controls">
+					<textarea id="country_en" class="input-xxlarge" rows="3">@Model.Item2</textarea>
+					<p class="help-block">In English</p>
+				</div>
+			</div>
+		</fieldset>
+	</div>
+</div>

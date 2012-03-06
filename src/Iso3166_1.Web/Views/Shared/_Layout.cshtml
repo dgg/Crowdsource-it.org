@@ -1,8 +1,9 @@
 ﻿@{
 	Bundles.Reference("content/bootstrap.css");
 	Bundles.Reference("content/bootstrap-responsive.css");
-	Bundles.Reference("scripts/jquery-1.7.1.js");
-	Bundles.Reference("scripts/bootstrap.js");
+
+	Bundles.Reference("scripts/special", "head");
+	Bundles.Reference("scripts");
 }
 <!DOCTYPE html>
 <html>
@@ -13,6 +14,7 @@
     <meta name="author" content="">
 	<title>@ViewBag.Title</title>
 	@Bundles.RenderStylesheets()
+	@Bundles.RenderScripts("head")
 	<style type="text/css">
       body {
         padding-top: 60px;
