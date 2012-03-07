@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Data;
 using System.Globalization;
 using System.Linq;
 using Iso3166_1.Crowdsource_it.org.Web.Api.Infrastructure;
@@ -11,22 +10,18 @@ namespace Iso3166_1.Crowdsource_it.org.Web.Api
 	public class CountryService : IService<Messages.Countries>, IService<Messages.Country>, IRequiresRequestContext
 	{
 		public IRequestContext RequestContext { get; set; }
-		public IDbConnection Db { get; set; }
+		public ICountryRepository Repository { get; set; }
 
 		public object Execute(Messages.Countries request)
 		{
-			using (Db)
+			CultureInfo language = RequestContext.Language(request.Language);
+
+			IEnumerable<Country> model = Repository.FindCurrent(language);
+
+			return model.ToResponse(() => new Messages.CountriesResponse
 			{
-				Db.Open();
-
-				CultureInfo language = RequestContext.Language(request.Language);
-				IEnumerable<Country> model = Db.Countries(language);
-
-				return model.ToResponse(() => new Messages.CountriesResponse
-				{
-					Countries = model.Select(toResource).ToArray()
-				});
-			}
+				Countries = model.Select(toResource).ToArray()
+			});
 		}
 
 		public Resources.Country toResource(Country model)
@@ -42,14 +37,9 @@ namespace Iso3166_1.Crowdsource_it.org.Web.Api
 
 		public object Execute(Messages.Country request)
 		{
-			using (Db)
-			{
-				Db.Open();
-				CultureInfo language = RequestContext.Language(request.Language);
-				Country model = Db.Country(request.Code, language);
-				
-				return model.ToResponse(() =>  toResource(model));
-			}
+			CultureInfo language = RequestContext.Language(request.Language);
+			Country model = Repository.Get(request.Code, language);
+			return model.ToResponse(() => toResource(model));
 		}
 	}
 }

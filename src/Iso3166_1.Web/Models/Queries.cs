@@ -8,31 +8,47 @@ namespace Iso3166_1.Crowdsource_it.org.Web.Models
 {
 	public static class Queries
 	{
-		public static IEnumerable<Country> Countries(this IDbConnection cn, CultureInfo language)
+		public static IEnumerable<Country> CurrentCountries(this IDbConnection cn, CultureInfo language)
 		{
-			return cn.Query<Country, Translation, Country>(
-				"SELECT * FROM Countries AS c INNER JOIN Translations AS t ON c.Alpha2 = t.Alpha2 WHERE t.Language = @lang ORDER BY t.Name",
+			return cn.Query<Country, Translation, Country>(@"
+SELECT *
+FROM Countries AS c INNER JOIN Translations AS t
+	ON c.Alpha2 = t.Alpha2
+WHERE
+	t.Language = @lang AND
+	c.Obsolete = 0
+ORDER BY t.Name",
 				(c, t) => c.Translated(t),
 				new { lang = language.Name },
 				splitOn: "Alpha2");
 		}
 
-		public static Country Country(this IDbConnection cn, string alpha2Code, CultureInfo language)
+		public static Country Country(this IDbConnection cn, string alpha2Code, string language)
 		{
-			return cn.Query<Country, Translation, Country>(
-				"SELECT * FROM Countries AS c INNER JOIN Translations AS t ON c.Alpha2 = t.Alpha2 WHERE c.Alpha2 = @code AND t.Language = @lang",
+			return cn.Query<Country, Translation, Country>(@"
+SELECT *
+FROM Countries AS c INNER JOIN Translations AS t
+	ON c.Alpha2 = t.Alpha2
+WHERE
+	c.Alpha2 = @code AND
+t.Language = @lang",
 				(c, t) => c.Translated(t),
-				new { code = alpha2Code, lang = language.Name },
+				new { code = alpha2Code, lang = language },
 				splitOn: "Alpha2")
 				.SingleOrDefault();
 		}
 
-		public static IEnumerable<Country> AllCountries(this IDbConnection cn, CultureInfo language)
+		public static IEnumerable<Country> AllCountries(this IDbConnection cn, string language)
 		{
-			return cn.Query<Country, Translation, Country>(
-				"SELECT * FROM Countries AS c INNER JOIN Translations AS t ON c.Alpha2 = t.Alpha2 WHERE t.Language = @lang",
+			return cn.Query<Country, Translation, Country>(@"
+SELECT *
+FROM Countries AS c INNER JOIN Translations AS t
+ON c.Alpha2 = t.Alpha2
+WHERE
+	t.Language = @lang
+ORDER BY t.Name",
 				(c, t) => c.Translated(t),
-				new { lang = language.Name },
+				new { lang = language },
 				splitOn: "Alpha2");
 		}
 

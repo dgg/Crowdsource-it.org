@@ -81,11 +81,18 @@
     <Reference Include="ServiceStack.Interfaces">
       <HintPath>..\..\packages\ServiceStack.Common.3.5.5\lib\net35\ServiceStack.Interfaces.dll</HintPath>
     </Reference>
+    <Reference Include="ServiceStack.OrmLite">
+      <HintPath>..\..\packages\ServiceStack.OrmLite.SqlServer.3.6.0\lib\ServiceStack.OrmLite.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.OrmLite.SqlServer">
+      <HintPath>..\..\packages\ServiceStack.OrmLite.SqlServer.3.6.0\lib\ServiceStack.OrmLite.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="ServiceStack.ServiceInterface">
       <HintPath>..\..\packages\ServiceStack.3.6.0\lib\net35\ServiceStack.ServiceInterface.dll</HintPath>
     </Reference>
-    <Reference Include="ServiceStack.Text">
-      <HintPath>..\..\packages\ServiceStack.Text.3.5.7\lib\net35\ServiceStack.Text.dll</HintPath>
+    <Reference Include="ServiceStack.Text, Version=3.6.0.3283, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\ServiceStack.Text.3.6.0\lib\net35\ServiceStack.Text.dll</HintPath>
     </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
@@ -114,7 +121,6 @@
     <Compile Include="Api\Infrastructure\AvailableLanguages.cs" />
     <Compile Include="Api\Infrastructure\RequestExtensions.cs" />
     <Compile Include="Api\Infrastructure\ResponseExtensions.cs" />
-    <Compile Include="Api\Infrastructure\PrepareCountryQueryAttribute.cs" />
     <Compile Include="Api\Infrastructure\Registry.cs" />
     <Compile Include="Api\LanguageService.cs" />
     <Compile Include="Api\Messages\Countries.cs" />
@@ -126,6 +132,7 @@
     <Compile Include="Api\Resources\Country.cs" />
     <Compile Include="Api\Resources\Language.cs" />
     <Compile Include="App_Start\AppHost.cs" />
+    <Compile Include="App_Start\HostBootstrapper.cs" />
     <Compile Include="CassetteConfiguration.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="ExcludeDirectorySearch.cs" />
@@ -133,6 +140,11 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Country.cs" />
+    <Compile Include="Api\ILanguageRepository.cs" />
+    <Compile Include="Api\ICountryRepository.cs" />
+    <Compile Include="Models\CountryRepository.cs" />
+    <Compile Include="Models\CultureInfo.Extensions.cs" />
+    <Compile Include="Models\LanguageRepository.cs" />
     <Compile Include="Models\Queries.cs" />
     <Compile Include="Models\Translation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -152,8 +164,8 @@
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\special\modernizr-2.5.3.js" />
     <Content Include="Scripts\pages\Demo.js" />
-    <Content Include="Scripts\special\modernizr-2.0.6-development-only.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
