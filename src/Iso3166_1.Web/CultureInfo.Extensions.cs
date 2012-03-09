@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Globalization;
 
-namespace Iso3166_1.Crowdsource_it.org.Web.Models
+namespace Iso3166_1.Crowdsource_it.org.Web
 {
 	public static class CultureInfoExtensions
 	{

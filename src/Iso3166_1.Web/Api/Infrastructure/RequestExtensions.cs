@@ -8,16 +8,15 @@ namespace Iso3166_1.Crowdsource_it.org.Web.Api.Infrastructure
 		public static CultureInfo Language(this IRequestContext request, string languageInMessage)
 		{
 			CultureInfo language;
-			var available = new AvailableLanguages();
-			if (string.IsNullOrEmpty(languageInMessage) || !available.ContainsKey(languageInMessage))
+			if (string.IsNullOrEmpty(languageInMessage) || !Available.Languages.ContainsKey(languageInMessage))
 			{
 				string header = request.GetHeader("Accept-Language");
 				
-				language = available.GetOrInvariant(header);
+				language = Available.Languages.GetOrInvariant(header);
 			}
 			else
 			{
-				language = available[languageInMessage];
+				language = Available.Languages[languageInMessage];
 			}
 			return language;
 		}

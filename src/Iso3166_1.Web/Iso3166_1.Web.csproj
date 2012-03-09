@@ -122,7 +122,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Api\CountryService.cs" />
-    <Compile Include="Api\Infrastructure\AvailableLanguages.cs" />
+    <Compile Include="Api\Infrastructure\Available.cs" />
+    <Compile Include="Models\CacheHash.cs" />
     <Compile Include="Api\Infrastructure\ElmahVerboserLogger.cs" />
     <Compile Include="Api\Infrastructure\ElmahVerboserLoggerFactory.cs" />
     <Compile Include="Api\Infrastructure\NotFoundResourceFilter.cs" />
@@ -151,7 +152,7 @@
     <Compile Include="Api\ILanguageRepository.cs" />
     <Compile Include="Api\ICountryRepository.cs" />
     <Compile Include="Models\CountryRepository.cs" />
-    <Compile Include="Models\CultureInfo.Extensions.cs" />
+    <Compile Include="CultureInfo.Extensions.cs" />
     <Compile Include="Models\LanguageRepository.cs" />
     <Compile Include="Models\Queries.cs" />
     <Compile Include="Models\Translation.cs" />

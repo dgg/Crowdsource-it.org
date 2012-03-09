@@ -5,15 +5,19 @@ using System.Linq;
 
 namespace Iso3166_1.Crowdsource_it.org.Web.Api.Infrastructure
 {
-	public class AvailableLanguages
+	public sealed class Available
 	{
-		private static readonly Dictionary<string, CultureInfo> _inner;
-		static AvailableLanguages()
+		private readonly Dictionary<string, CultureInfo> _inner;
+		private Available()
 		{
 			_inner = CultureInfo.GetCultures(CultureTypes.NeutralCultures)
 				.Where(ci => !ci.Equals(CultureInfo.InvariantCulture))
 				.ToDictionary(ci => ci.Name, ci => ci, StringComparer.OrdinalIgnoreCase);
 		}
+
+		private static  readonly Lazy<Available> _lazy = new Lazy<Available>(()=> new Available());
+
+		public static Available Languages { get { return _lazy.Value; } }
 
 		public bool ContainsKey(string key)
 		{
