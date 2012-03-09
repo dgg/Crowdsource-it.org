@@ -1,4 +1,6 @@
+using System.Web;
 using System.Web.Mvc;
+using ServiceStack.Logging;
 using ServiceStack.Mvc;
 using ServiceStack.WebHost.Endpoints;
 
@@ -21,7 +23,6 @@ namespace Iso3166_1.Crowdsource_it.org.Web.App_Start
 				.WithConfig();
 
 			SetConfig(config);
-
 
 			//Set MVC to use the same Funq IOC as ServiceStack
 			ControllerBuilder.Current.SetControllerFactory(new FunqControllerFactory(container));

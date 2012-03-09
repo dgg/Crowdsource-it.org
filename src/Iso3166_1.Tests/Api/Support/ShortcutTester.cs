@@ -22,7 +22,7 @@ namespace Iso3166_1.Tests.Api.Support
 			_host = null;
 		}
 
-		protected ShortcutTester Replacing<T>(T dependency)
+		public ShortcutTester Replacing<T>(T dependency)
 		{
 			_host.Register(dependency);
 			return this;

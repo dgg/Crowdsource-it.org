@@ -28,7 +28,7 @@ namespace Iso3166_1.Tests.Api.Support
 			_host = null;
 		}
 
-		protected EndToEndTester Replacing<T>(T dependency)
+		public EndToEndTester Replacing<T>(T dependency)
 		{
 			_host.Register(dependency);
 			return this;

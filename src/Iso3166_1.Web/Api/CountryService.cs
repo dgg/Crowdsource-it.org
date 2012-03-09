@@ -39,7 +39,11 @@ namespace Iso3166_1.Crowdsource_it.org.Web.Api
 		{
 			CultureInfo language = RequestContext.Language(request.Language);
 			Country model = Repository.Get(request.Code, language);
-			return model.ToResponse(() => toResource(model));
+
+			return model.ToResponse(() => new Messages.CountryResponse
+			{
+				Country = toResource(model)
+			});
 		}
 	}
 }

@@ -2,7 +2,7 @@
 using Iso3166_1.Crowdsource_it.org.Web.App_Start;
 using ServiceStack.WebHost.Endpoints;
 
-namespace Iso3166_1.Tests.Api
+namespace Iso3166_1.Tests.Api.Support
 {
 	public class TestHost : AppHostHttpListenerBase
 	{

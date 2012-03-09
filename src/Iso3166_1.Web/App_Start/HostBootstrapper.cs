@@ -49,6 +49,8 @@ namespace Iso3166_1.Crowdsource_it.org.Web.App_Start
 			List<Action<IHttpRequest, IHttpResponse, object>> requestFilters,
 			List<Action<IHttpRequest, IHttpResponse, object>> responseFilters)
 		{
+			responseFilters.Add(new NotFoundResourceFilter().ResponseFilter);
+
 			return this;
 		}
 	}

@@ -41,7 +41,7 @@ namespace Iso3166_1.Tests.Api
 
 			Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.OK));
 			Assert.That(response.ContentType, Is.EqualTo(HttpContentTypes.ApplicationJson));
-			Assert.That(response.DynamicBody.name, Is.EqualTo(translation));
+			Assert.That(response.DynamicBody.country.name, Is.EqualTo(translation));
 		}
 
 		[Test]
