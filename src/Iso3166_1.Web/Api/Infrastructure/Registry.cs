@@ -8,6 +8,8 @@ using ServiceStack.CacheAccess.Providers;
 using ServiceStack.Logging;
 using ServiceStack.Logging.Elmah;
 using ServiceStack.Logging.Support.Logging;
+using ServiceStack.MiniProfiler;
+using ServiceStack.MiniProfiler.Data;
 
 namespace Iso3166_1.Crowdsource_it.org.Web.Api.Infrastructure
 {
@@ -18,7 +20,9 @@ namespace Iso3166_1.Crowdsource_it.org.Web.Api.Infrastructure
 			container.Register<ICacheClient>(new MemoryCacheClient());
 
 			container.Register<IDbConnection>(c =>
-				new SqlCeConnection(ConfigurationManager.ConnectionStrings["Iso3166_1"].ConnectionString))
+				new ProfiledDbConnection(
+					new SqlCeConnection(ConfigurationManager.ConnectionStrings["Iso3166_1"].ConnectionString),
+					Profiler.Current))
 				.ReusedWithin(ReuseScope.None);
 
 			container.RegisterAutoWiredAs<CountryRepository, ICountryRepository>()

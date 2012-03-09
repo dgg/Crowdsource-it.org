@@ -1,5 +1,7 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Web.Mvc;
 using System.Web.Routing;
+using ServiceStack.MiniProfiler;
 
 namespace Iso3166_1.Crowdsource_it.org.Web
 {
@@ -30,6 +32,16 @@ namespace Iso3166_1.Crowdsource_it.org.Web
 
 			RegisterGlobalFilters(GlobalFilters.Filters);
 			RegisterRoutes(RouteTable.Routes);
+		}
+
+		protected void Application_BeginRequest(object sender, EventArgs e)
+		{
+			if (Request.IsLocal) Profiler.Start();
+		}
+
+		protected  void Application_EndRequest(object sender, EventArgs e)
+		{
+			Profiler.Stop();
 		}
 	}
 }
