@@ -20,6 +20,7 @@ namespace Iso3166_1.Crowdsource_it.org.Web.App_Start
 				.Bootstrap(Routes)
 				.Bootstrap(container)
 				.Bootstrap(RequestFilters, ResponseFilters)
+				.Bootstrap(ContentTypeFilters)
 				.WithConfig();
 
 			SetConfig(config);

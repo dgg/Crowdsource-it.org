@@ -2,6 +2,7 @@
 using System.Net;
 using EasyHttp.Http;
 using Iso3166_1.Crowdsource_it.org.Web.Api;
+using Iso3166_1.Crowdsource_it.org.Web.Api.Infrastructure;
 using Iso3166_1.Crowdsource_it.org.Web.Api.Messages;
 using Iso3166_1.Tests.Api.Support;
 using NSubstitute;
@@ -130,6 +131,46 @@ namespace Iso3166_1.Tests.Api
 			client.Get(UrlFor("/languages"));
 
 			log.Received().Warn(Arg.Any<string>(), Arg.Any<ObjectNotFoundException>());
+		}
+
+		[Test]
+		public void Get_ApplicationFormat_YamlResponse()
+		{
+			var repository = Substitute.For<ILanguageRepository>();
+			Replacing(repository);
+			repository.FindAll().Returns(new[] { "es", "da" });
+
+			var client = new HttpClient
+			{
+				Request = { Accept = ApplicationFormat.ContentType }
+			};
+
+			var response = client.Get(UrlFor("/languages"));
+
+			Assert.That(response.RawText, Is.EqualTo(
+@"Languages:
+- Code: es
+- Code: da
+"));
+		}
+
+		[Test]
+		public void Get_ApplicationFormatOverride_YamlResponse()
+		{
+			var repository = Substitute.For<ILanguageRepository>();
+			Replacing(repository);
+			repository.FindAll().Returns(new[] { "es", "da" });
+
+			var client = new HttpClient();
+
+			var response = client.Get(UrlFor("/languages?format=prs-iso3166-1-yaml"));
+
+			Assert.That(response.RawText, Is.EqualTo(
+@"Languages:
+- Code: es
+- Code: da
+"));
+
 		}
 	}
 }

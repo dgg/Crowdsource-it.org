@@ -53,5 +53,12 @@ namespace Iso3166_1.Crowdsource_it.org.Web.App_Start
 
 			return this;
 		}
+
+		public HostBootstrapper Bootstrap(IContentTypeFilter contentTypeFilters)
+		{
+			contentTypeFilters.Register(ApplicationFormat.ContentType, ApplicationFormat.ToStream, ApplicationFormat.FromStream);
+
+			return this;
+		}
 	}
 }

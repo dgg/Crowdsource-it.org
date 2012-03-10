@@ -119,9 +119,18 @@
     <Reference Include="WebActivator">
       <HintPath>..\..\packages\WebActivator.1.5\lib\net40\WebActivator.dll</HintPath>
     </Reference>
+    <Reference Include="YamlDotNet.Core, Version=0.2.4412.28409, Culture=neutral, PublicKeyToken=2b53052c5884d7a1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\yamldotnet\YamlDotNet.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="YamlDotNet.RepresentationModel, Version=0.2.4412.28409, Culture=neutral, PublicKeyToken=2b53052c5884d7a1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\yamldotnet\YamlDotNet.RepresentationModel.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Api\CountryService.cs" />
+    <Compile Include="Api\Infrastructure\ApplicationFormat.cs" />
     <Compile Include="Api\Infrastructure\Available.cs" />
     <Compile Include="Models\CacheHash.cs" />
     <Compile Include="Api\Infrastructure\ElmahVerboserLogger.cs" />

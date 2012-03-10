@@ -16,6 +16,7 @@ namespace Iso3166_1.Tests.Api.Support
 				.Bootstrap(Routes)
 				.Bootstrap(container)
 				.Bootstrap(RequestFilters, ResponseFilters)
+				.Bootstrap(ContentTypeFilters)
 				.WithConfig();
 
 			SetConfig(config);
