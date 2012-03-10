@@ -49,7 +49,7 @@ namespace Iso3166_1.Crowdsource_it.org.Web.Models
 			using (_db)
 			{
 				_db.Open();
-				IEnumerable<Country> model = _db.CurrentCountries(language);
+				IEnumerable<Country> model = _db.CurrentCountries(language.NeutralName());
 				return model;
 			}
 		}
@@ -60,6 +60,26 @@ namespace Iso3166_1.Crowdsource_it.org.Web.Models
 			{
 				_db.Open();
 				IEnumerable<Country> model = _db.AllCountries(language.NeutralName());
+				return model;
+			}
+		}
+
+		public bool AreTranslated(CultureInfo language)
+		{
+			using (_db)
+			{
+				_db.Open();
+				bool model = _db.CurrentExist(language.NeutralName());
+				return model;
+			}
+		}
+
+		public bool Exists(string alpha2_Code, CultureInfo language)
+		{
+			using (_db)
+			{
+				_db.Open();
+				bool model = _db.CurrentExists(alpha2_Code, language.NeutralName());
 				return model;
 			}
 		}

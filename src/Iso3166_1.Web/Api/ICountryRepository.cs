@@ -9,5 +9,7 @@ namespace Iso3166_1.Crowdsource_it.org.Web.Api
 		IEnumerable<Country> FindCurrent(CultureInfo language);
 		Country Get(string alpha2_Code, CultureInfo language);
 		IEnumerable<Country> FindAll(CultureInfo language);
+		bool AreTranslated(CultureInfo language);
+		bool Exists(string alpha2_Code, CultureInfo language);
 	}
 }

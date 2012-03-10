@@ -49,8 +49,7 @@ namespace Iso3166_1.Tests.Api
 		{
 			var repository = Substitute.For<ICountryRepository>();
 			Replacing(repository);
-			repository.Get("ES", Arg.Any<CultureInfo>()).Returns(
-				new Country { Translation = new Translation() });
+			repository.Exists("ES", Arg.Any<CultureInfo>()).Returns(true);
 
 			var client = new HttpClient();
 			client.Request.Accept = HttpContentTypes.ApplicationXml;
@@ -66,11 +65,42 @@ namespace Iso3166_1.Tests.Api
 		{
 			var repository = Substitute.For<ICountryRepository>();
 			Replacing(repository);
-			repository.Get("ES", Arg.Any<CultureInfo>()).Returns(default(Country));
+			repository.Exists("ES", Arg.Any<CultureInfo>()).Returns(false);
 
 			var client = new HttpClient();
 			client.Request.Accept = HttpContentTypes.ApplicationXml;
 			HttpResponse response = client.Head(UrlFor("/country/ES/en"));
+
+			Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.NotFound));
+			Assert.That(response.ContentType, Is.Null);
+		}
+
+		[Test]
+		public void Countries_HeadOverExisting_Ok()
+		{
+			var repository = Substitute.For<ICountryRepository>();
+			Replacing(repository);
+			repository.AreTranslated(Arg.Any<CultureInfo>()).Returns(true);
+
+			var client = new HttpClient();
+			client.Request.Accept = HttpContentTypes.ApplicationXml;
+			HttpResponse response = client.Head(UrlFor("/countries/ES"));
+
+			Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.OK));
+			Assert.That(response.ContentType, Is.EqualTo(HttpContentTypes.ApplicationXml));
+			Assert.That(response.RawText, Is.Empty);
+		}
+
+		[Test]
+		public void Countries_HeadOverMissing_NotFound()
+		{
+			var repository = Substitute.For<ICountryRepository>();
+			Replacing(repository);
+			repository.AreTranslated(Arg.Any<CultureInfo>()).Returns(false);
+
+			var client = new HttpClient();
+			client.Request.Accept = HttpContentTypes.ApplicationXml;
+			HttpResponse response = client.Head(UrlFor("/countries/ES"));
 
 			Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.NotFound));
 			Assert.That(response.ContentType, Is.Null);

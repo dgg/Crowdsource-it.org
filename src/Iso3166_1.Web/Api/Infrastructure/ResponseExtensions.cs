@@ -20,6 +20,11 @@ namespace Iso3166_1.Crowdsource_it.org.Web.Api.Infrastructure
 			return !(model ?? Enumerable.Empty<TModel>()).Any() ? notFound<IEnumerable<TModel>>() : found(response);
 		}
 
+		public static IHttpResult ToResponse<TModel>(this bool found)
+		{
+			return found ? new HttpResult(HttpStatusCode.OK, "Found") : notFound<TModel>();
+		}
+
 		private static IHttpResult found<TResponse>(Func<TResponse> response)
 		{
 			return new HttpResult(response(), HttpStatusCode.OK);

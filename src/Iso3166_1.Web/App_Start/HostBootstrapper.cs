@@ -18,8 +18,8 @@ namespace Iso3166_1.Crowdsource_it.org.Web.App_Start
 		/// </summary>
 		public HostBootstrapper Bootstrap(IServiceRoutes routes)
 		{
-			routes.Add<Api.Messages.Countries>("/countries/{language}", "GET");
-			routes.Add<Api.Messages.Countries>("/countries", "GET");
+			routes.Add<Api.Messages.Countries>("/countries/{language}", "GET, HEAD");
+			routes.Add<Api.Messages.Countries>("/countries", "GET, HEAD");
 
 			return this;
 		}
