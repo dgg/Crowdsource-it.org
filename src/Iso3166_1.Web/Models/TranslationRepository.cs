@@ -1,0 +1,26 @@
+﻿using System.Data;
+using System.Globalization;
+using Iso3166_1.Crowdsource_it.org.Web.Api;
+
+namespace Iso3166_1.Crowdsource_it.org.Web.Models
+{
+	internal class TranslationRepository : ITranslationRepository
+	{
+		private readonly IDbConnection _db;
+
+		public TranslationRepository(IDbConnection db)
+		{
+			_db = db;
+		}
+
+		public bool Exists(string alpha2_Code, CultureInfo language)
+		{
+			using (_db)
+			{
+				_db.Open();
+				bool model = _db.CurrentExists(alpha2_Code, language.NeutralName());
+				return model;
+			}
+		}
+	}
+}

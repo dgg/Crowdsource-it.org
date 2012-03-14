@@ -130,6 +130,12 @@
     <Compile Include="Api\CountryService.cs" />
     <Compile Include="Api\Infrastructure\ApplicationFormat.cs" />
     <Compile Include="Api\Infrastructure\Available.cs" />
+    <Compile Include="Api\Infrastructure\Reserved.cs" />
+    <Compile Include="Api\ITranslationRepository.cs" />
+    <Compile Include="Api\Messages\Translation.cs" />
+    <Compile Include="Api\Messages\TranslationResponse.cs" />
+    <Compile Include="Api\Resources\Translation.cs" />
+    <Compile Include="Api\TranslationService.cs" />
     <Compile Include="Models\CacheHash.cs" />
     <Compile Include="Api\Infrastructure\ElmahVerboserLogger.cs" />
     <Compile Include="Api\Infrastructure\ElmahVerboserLoggerFactory.cs" />
@@ -163,6 +169,7 @@
     <Compile Include="Models\LanguageRepository.cs" />
     <Compile Include="Models\Queries.cs" />
     <Compile Include="Models\Translation.cs" />
+    <Compile Include="Models\TranslationRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

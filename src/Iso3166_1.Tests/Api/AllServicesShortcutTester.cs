@@ -2,7 +2,6 @@
 using System.Net;
 using Iso3166_1.Crowdsource_it.org.Web.Api;
 using Iso3166_1.Crowdsource_it.org.Web.Api.Messages;
-using Iso3166_1.Crowdsource_it.org.Web.Models;
 using Iso3166_1.Tests.Api.Support;
 using NSubstitute;
 using NUnit.Framework;
@@ -11,6 +10,7 @@ using ServiceStack.ServiceHost;
 
 using CountryMsg = Iso3166_1.Crowdsource_it.org.Web.Api.Messages.Country;
 using CountryMdl = Iso3166_1.Crowdsource_it.org.Web.Models.Country;
+using TranslationMdl = Iso3166_1.Crowdsource_it.org.Web.Models.Translation;
 
 namespace Iso3166_1.Tests.Api
 {
@@ -58,7 +58,7 @@ namespace Iso3166_1.Tests.Api
 			var repository = Substitute.For<ICountryRepository>();
 			Replacing(repository);
 			repository.FindCurrent(Arg.Any<CultureInfo>()).Returns(
-				new[]{ new CountryMdl {Translation = new Translation {Name = "Dinamarca"}} });
+				new[] { new CountryMdl { Translation = new TranslationMdl { Name = "Dinamarca" } } });
 
 			object response = Host.ExecuteService(new Countries {Language = "es"},
 				EndpointAttributes.Xml | EndpointAttributes.HttpGet);
@@ -91,7 +91,7 @@ namespace Iso3166_1.Tests.Api
 			var repository = Substitute.For<ICountryRepository>();
 			Replacing(repository);
 			repository.Get(Arg.Any<string>(), Arg.Any<CultureInfo>()).Returns(
-				new CountryMdl { Translation = new Translation {Name = "Dinamarca"} });
+				new CountryMdl { Translation = new TranslationMdl { Name = "Dinamarca" } });
 
 			object response = Host.ExecuteService(new CountryMsg {Language = "es", Code = "DK"},
 				EndpointAttributes.Xml | EndpointAttributes.HttpGet);

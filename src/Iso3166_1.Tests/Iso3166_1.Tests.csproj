@@ -83,6 +83,7 @@
     <Compile Include="Api\Support\EndToEndTester.cs" />
     <Compile Include="Api\Support\ShortcutTester.cs" />
     <Compile Include="Api\Support\TestHost.cs" />
+    <Compile Include="Api\TranslationEndToEndTester.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
