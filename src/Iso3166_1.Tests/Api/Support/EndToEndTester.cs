@@ -39,8 +39,19 @@ namespace Iso3166_1.Tests.Api.Support
 			return new Uri(BaseUrl, restRelativeUri);
 		}
 
-		protected string UrlFor(string restRelativeUri)
+		/*protected string UrlFor(string restRelativeUri)
 		{
+			return Urifor(restRelativeUri).ToString();
+		}*/
+
+		protected string UrlFor(string restRelativeUriTemplate, params string[] args)
+		{
+			string restRelativeUri = restRelativeUriTemplate;
+			if (args != null && args.Length > 0)
+			{
+				restRelativeUri = string.Format(restRelativeUriTemplate, args);
+			}
+
 			return Urifor(restRelativeUri).ToString();
 		}
 	}

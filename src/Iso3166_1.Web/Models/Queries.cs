@@ -108,5 +108,18 @@ VALUES (
 ",
 			new {code = alpha2Code, lang = language, name = translation});
 		}
+
+		public static bool Update(this IDbConnection cn, string alpha2Code, string language, string translation)
+		{
+			int recordCount = cn.Execute(@"
+UPDATE [Staged_Translations] SET
+	Name = @name
+WHERE
+	Alpha2 = @code,
+	Language = @lang
+",
+			new { code = alpha2Code, lang = language, name = translation });
+			return recordCount > 0;
+		}
 	}
 }

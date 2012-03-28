@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Net;
+using Iso3166_1.Crowdsource_it.org.Web.Api.Infrastructure;
 using ServiceStack.Common.Web;
 using ServiceStack.ServiceHost;
 using ServiceStack.ServiceInterface.ServiceModel;
@@ -22,15 +23,32 @@ namespace Iso3166_1.Crowdsource_it.org.Web.Api.Messages
 			return new HttpError(new TranslationResponse(), HttpStatusCode.MethodNotAllowed, "EntityExists", "The resource already exists. Use PUT for updates");
 		}
 
-		public static TranslationResponse New(IRequestContext request, Translation message)
+		public static IHttpResult Created(IRequestContext request, Translation message)
+		{
+			return new HttpResult(response(request, message), HttpStatusCode.Created);
+		}
+
+		public static IHttpResult Updated(IRequestContext request, Translation message)
+		{
+			return new HttpResult(response(request, message), HttpStatusCode.OK);
+		}
+
+		private static TranslationResponse response(IRequestContext request, Translation message)
 		{
 			var baseUrl = new Uri(request.AbsoluteUri, UriKind.Absolute);
 
-			return new TranslationResponse
+			var response = new TranslationResponse
 			{
 				Success = true,
 				Uri = Translation.Route.Write(baseUrl, message.Code, message.Language).AbsoluteUri
 			};
+
+			return response;
+		}
+
+		public static IHttpResult NotFound()
+		{
+			return new HttpError(HttpStatusCode.NotFound, TypeName.Friendly(typeof(Models.Translation)));
 		}
 	}
 }

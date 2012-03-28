@@ -55,15 +55,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\ServiceStack.Common.3.6.3\lib\net35\ServiceStack.Interfaces.dll</HintPath>
     </Reference>
-    <Reference Include="ServiceStack.OrmLite">
-      <HintPath>..\..\packages\ServiceStack.OrmLite.SqlServer.3.6.4\lib\ServiceStack.OrmLite.dll</HintPath>
-    </Reference>
-    <Reference Include="ServiceStack.OrmLite.SqlServer">
-      <HintPath>..\..\packages\ServiceStack.OrmLite.SqlServer.3.6.4\lib\ServiceStack.OrmLite.SqlServer.dll</HintPath>
-    </Reference>
-    <Reference Include="ServiceStack.RazorEngine">
-      <HintPath>..\..\packages\ServiceStack.3.6.3\lib\net35\ServiceStack.RazorEngine.dll</HintPath>
-    </Reference>
     <Reference Include="ServiceStack.ServiceInterface, Version=1.0.4462.3310, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\ServiceStack.3.6.3\lib\net35\ServiceStack.ServiceInterface.dll</HintPath>

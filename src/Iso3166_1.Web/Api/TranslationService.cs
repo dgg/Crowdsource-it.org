@@ -1,8 +1,5 @@
 ﻿using System.Globalization;
-using System.Net;
-using System.Web;
 using Iso3166_1.Crowdsource_it.org.Web.Api.Infrastructure;
-using ServiceStack.Common.Web;
 using ServiceStack.ServiceInterface;
 
 namespace Iso3166_1.Crowdsource_it.org.Web.Api
@@ -42,20 +39,24 @@ namespace Iso3166_1.Crowdsource_it.org.Web.Api
 
 			Repository.Create(model);
 
-			return model.ToResponse(()=> Messages.TranslationResponse.New(RequestContext, request));
+			return Messages.TranslationResponse.Created(RequestContext, request);
 		}
 
 
-		// PUT and PATCH are for changing existing entities
+		// PUT is for changing existing entities
 		public override object OnPut(Messages.Translation request)
 		{
-			return base.OnPut(request);
-		}
+			CultureInfo language;
+			if (!Available.Languages.TryGetValue(request.Language, out language))
+			{
+				return Messages.TranslationResponse.LanguageNotSupported();
+			}
+			var model = request.ToModel();
+			bool updated = Repository.Update(model);
 
-		// PUT and PATCH are for changing existing entities
-		public override object OnPatch(Messages.Translation request)
-		{
-			return base.OnPatch(request);
+			return updated ?
+				Messages.TranslationResponse.Updated(RequestContext, request) :
+				Messages.TranslationResponse.NotFound();
 		}
 	}
 }

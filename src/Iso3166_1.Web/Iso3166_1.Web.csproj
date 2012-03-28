@@ -92,12 +92,6 @@
     <Reference Include="ServiceStack.Logging.Elmah">
       <HintPath>..\..\packages\ServiceStack.Logging.Elmah.1.0.3.0\lib\net35\ServiceStack.Logging.Elmah.dll</HintPath>
     </Reference>
-    <Reference Include="ServiceStack.OrmLite">
-      <HintPath>..\..\packages\ServiceStack.OrmLite.SqlServer.3.6.4\lib\ServiceStack.OrmLite.dll</HintPath>
-    </Reference>
-    <Reference Include="ServiceStack.OrmLite.SqlServer">
-      <HintPath>..\..\packages\ServiceStack.OrmLite.SqlServer.3.6.4\lib\ServiceStack.OrmLite.SqlServer.dll</HintPath>
-    </Reference>
     <Reference Include="ServiceStack.ServiceInterface, Version=1.0.4462.3310, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\ServiceStack.3.6.3\lib\net35\ServiceStack.ServiceInterface.dll</HintPath>

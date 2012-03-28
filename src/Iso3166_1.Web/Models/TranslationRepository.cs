@@ -31,5 +31,18 @@ namespace Iso3166_1.Crowdsource_it.org.Web.Models
 				_db.Insert(translation.Alpha2, translation.Language, translation.Name);
 			}
 		}
+
+		public bool Update(Translation translation)
+		{
+			bool updated;
+			using (_db)
+			{
+				_db.Open();
+
+				updated = _db.Update(translation.Alpha2, translation.Language, translation.Name);
+			}
+
+			return updated;
+		}
 	}
 }
