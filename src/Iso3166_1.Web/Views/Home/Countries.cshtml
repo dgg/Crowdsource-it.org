@@ -1,7 +1,7 @@
 ﻿@{
-	ViewBag.Title = "Crowdsource-it :: ISO 3166-1 :: Demo";
+	ViewBag.Title = "Crowdsource-it :: ISO 3166-1 :: Countries Demo";
 
-	Bundles.Reference("scripts/pages/Demo.js");
+	Bundles.Reference("scripts/pages/Countries.js");
 }
 <div class="container">
 	<section id="intro">
@@ -16,8 +16,8 @@
 				<li><a href="#client" data-toggle="tab">Client</a></li>
 			</ul>
 			<div class="tab-content">
-				@Html.Partial("_DemoServerTab", Tuple.Create((IEnumerable<SelectListItem>)ViewBag.Countries, (string)@ViewBag.Country))
-				@Html.Partial("_DemoClientTab")
+				@Html.Partial("_CountriesServerTab", Tuple.Create((IEnumerable<SelectListItem>)ViewBag.Countries, (string)@ViewBag.Country))
+				@Html.Partial("_CountriesClientTab")
 			</div>
 		</div>
 	</section>

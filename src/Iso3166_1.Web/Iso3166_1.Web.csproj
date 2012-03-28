@@ -189,7 +189,7 @@
     <Content Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\special\modernizr-2.5.3.js" />
-    <Content Include="Scripts\pages\Demo.js" />
+    <Content Include="Scripts\pages\Countries.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -201,20 +201,20 @@
     </Content>
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Home\Demo.cshtml" />
+    <Content Include="Views\Home\Countries.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Home\_DemoServerTab.cshtml" />
+    <Content Include="Views\Home\_CountriesServerTab.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Home\_DemoClientTab.cshtml" />
+    <Content Include="Views\Home\_CountriesClientTab.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

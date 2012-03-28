@@ -14,7 +14,7 @@ namespace Iso3166_1.Crowdsource_it.org.Web.Controllers
 			return View();
 		}
 
-		public ActionResult Demo()
+		public ActionResult Countries()
 		{
 			Uri baseUri = Request.Url;
 			Uri countriesEn = new Uri(baseUri, "/api/countries/en"),
