@@ -79,7 +79,7 @@ namespace Iso3166_1.Crowdsource_it.org.Web.Models
 			using (_db)
 			{
 				_db.Open();
-				bool model = _db.CurrentExists(alpha2_Code, language.NeutralName());
+				bool model = _db.CurrentExists("Translations", alpha2_Code, language.NeutralName());
 				return model;
 			}
 		}

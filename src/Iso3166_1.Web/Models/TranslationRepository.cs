@@ -18,8 +18,17 @@ namespace Iso3166_1.Crowdsource_it.org.Web.Models
 			using (_db)
 			{
 				_db.Open();
-				bool model = _db.CurrentExists(alpha2_Code, language.NeutralName());
+				bool model = _db.CurrentExists("Staged_Translations", alpha2_Code, language.NeutralName());
 				return model;
+			}
+		}
+
+		public void Create(Translation translation)
+		{
+			using (_db)
+			{
+				_db.Open();
+				_db.Insert(translation.Alpha2, translation.Language, translation.Name);
 			}
 		}
 	}

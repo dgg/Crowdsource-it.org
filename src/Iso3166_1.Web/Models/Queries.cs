@@ -56,14 +56,15 @@ WHERE
 				.SingleOrDefault();
 		}
 
-		public static bool CurrentExists(this IDbConnection cn, string alpha2Code, string language)
+		public static bool CurrentExists(this IDbConnection cn, string table, string alpha2Code, string language)
 		{
-			return cn.Query<bool>(@"
+			return cn.Query<bool>(string.Format(
+@"
 SELECT 
     (CASE 
         WHEN EXISTS(
             SELECT NULL AS [EMPTY]
-            FROM Countries AS c INNER JOIN Translations AS t
+            FROM Countries AS c INNER JOIN {0} AS t
 				ON c.Alpha2 = t.Alpha2
 			WHERE
 				c.Alpha2 = @code AND
@@ -71,7 +72,7 @@ SELECT
             ) THEN 1
         ELSE 0
      END) AS [exists]
-",
+", table),
 			new { code = alpha2Code, lang = language }).Single();
 		}
 
@@ -92,6 +93,20 @@ ORDER BY t.Name",
 		public static IEnumerable<string> AvailableLanguages(this IDbConnection cn)
 		{
 			return cn.Query<string>("SELECT DISTINCT(Language) FROM Translations");
+		}
+
+		public static void Insert(this IDbConnection cn, string alpha2Code, string language, string translation)
+		{
+			cn.Execute(@"
+INSERT INTO [Staged_Translations] (
+	Alpha2,
+	Language,
+	Name
+)
+VALUES (
+@code, @lang, @name)
+",
+			new {code = alpha2Code, lang = language, name = translation});
 		}
 	}
 }

@@ -1,5 +1,8 @@
 ﻿using System.Globalization;
+using System.Net;
+using System.Web;
 using Iso3166_1.Crowdsource_it.org.Web.Api.Infrastructure;
+using ServiceStack.Common.Web;
 using ServiceStack.ServiceInterface;
 
 namespace Iso3166_1.Crowdsource_it.org.Web.Api
@@ -24,10 +27,24 @@ namespace Iso3166_1.Crowdsource_it.org.Web.Api
 		// POST is for new entities
 		public override object OnPost(Messages.Translation request)
 		{
-			/*var resource = request.Data;
-			bool exists = Repository.Exists(request.Data.)*/
-			return base.OnPost(request);
+			CultureInfo language;
+			if (!Available.Languages.TryGetValue(request.Language, out language))
+			{
+				return Messages.TranslationResponse.LanguageNotSupported();
+			}
+
+			if (Repository.Exists(request.Code, language))
+			{
+				return Messages.TranslationResponse.AlreadyExists();
+			}
+
+			var model = request.ToModel();
+
+			Repository.Create(model);
+
+			return model.ToResponse(()=> Messages.TranslationResponse.New(RequestContext, request));
 		}
+
 
 		// PUT and PATCH are for changing existing entities
 		public override object OnPut(Messages.Translation request)

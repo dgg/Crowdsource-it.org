@@ -134,7 +134,6 @@
     <Compile Include="Api\ITranslationRepository.cs" />
     <Compile Include="Api\Messages\Translation.cs" />
     <Compile Include="Api\Messages\TranslationResponse.cs" />
-    <Compile Include="Api\Resources\Translation.cs" />
     <Compile Include="Api\TranslationService.cs" />
     <Compile Include="Models\CacheHash.cs" />
     <Compile Include="Api\Infrastructure\ElmahVerboserLogger.cs" />
