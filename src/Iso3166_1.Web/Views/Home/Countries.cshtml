@@ -5,8 +5,8 @@
 }
 <div class="container">
 	<section id="intro">
-		<h1>Some Demo code</h1>
-		<p>Usage of the <code>/api/countries/{language}</code> and <code>/api/country/{code}</code> services, both consumed server-side and client.side.</p>
+		<h1>Some code for countries</h1>
+		<p>Usage of the <code>/api/countries/{language}</code> and <code>/api/country/{code}</code> services, both consumed server-side and client-side.</p>
 		<br/>
 	</section>
 	<section id="demo">
@@ -15,9 +15,11 @@
 				<li class="active"><a href="#server" data-toggle="tab">Server</a></li>
 				<li><a href="#client" data-toggle="tab">Client</a></li>
 			</ul>
-			<div class="tab-content">
-				@Html.Partial("_CountriesServerTab", Tuple.Create((IEnumerable<SelectListItem>)ViewBag.Countries, (string)@ViewBag.Country))
-				@Html.Partial("_CountriesClientTab")
+			<div class="span7">
+				<div class="tab-content ">
+					@Html.Partial("_CountriesServerTab", Tuple.Create((IEnumerable<SelectListItem>)ViewBag.Countries, (string)@ViewBag.Country))
+					@Html.Partial("_CountriesClientTab")
+				</div>
 			</div>
 		</div>
 	</section>

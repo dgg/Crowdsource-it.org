@@ -30,19 +30,14 @@ namespace Iso3166_1.Crowdsource_it.org.Web.Api
 				return Messages.TranslationResponse.LanguageNotSupported();
 			}
 
-			if (Repository.Exists(request.Code, language))
-			{
-				return Messages.TranslationResponse.AlreadyExists();
-			}
-
 			var model = request.ToModel();
 
-			Repository.Create(model);
-
-			return Messages.TranslationResponse.Created(RequestContext, request);
+			bool created = Repository.Create(model);
+			return created ?
+				Messages.TranslationResponse.Created(RequestContext, request) :
+				Messages.TranslationResponse.AlreadyExists();
 		}
-
-
+		
 		// PUT is for changing existing entities
 		public override object OnPut(Messages.Translation request)
 		{

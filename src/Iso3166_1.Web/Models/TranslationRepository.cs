@@ -23,12 +23,18 @@ namespace Iso3166_1.Crowdsource_it.org.Web.Models
 			}
 		}
 
-		public void Create(Translation translation)
+		public bool Create(Translation translation)
 		{
 			using (_db)
 			{
 				_db.Open();
+				bool exists = _db.CurrentExists("Staged_Translations", translation.Alpha2, translation.Language);
+				if (exists)
+				{
+					return false;
+				}
 				_db.Insert(translation.Alpha2, translation.Language, translation.Name);
+				return true;
 			}
 		}
 

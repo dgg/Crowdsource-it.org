@@ -69,8 +69,8 @@ SELECT
 			WHERE
 				c.Alpha2 = @code AND
 				t.Language = @lang
-            ) THEN 1
-        ELSE 0
+            ) THEN CONVERT(bit, 1)
+        ELSE CONVERT(bit, 0)
      END) AS [exists]
 ", table),
 			new { code = alpha2Code, lang = language }).Single();
@@ -115,7 +115,7 @@ VALUES (
 UPDATE [Staged_Translations] SET
 	Name = @name
 WHERE
-	Alpha2 = @code,
+	Alpha2 = @code AND
 	Language = @lang
 ",
 			new { code = alpha2Code, lang = language, name = translation });

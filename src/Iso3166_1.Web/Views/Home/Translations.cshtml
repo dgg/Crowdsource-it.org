@@ -1,0 +1,30 @@
+﻿@{
+	ViewBag.Title = "Crowdsource-it :: ISO 3166-1 :: Translations Demo";
+
+	Bundles.Reference("scripts/pages/Translations.js");
+}
+<div class="container">
+	<section id="intro">
+		<h1>Some code for translations</h1>
+		<p>Usage of the <code>/api/translations/{code}/{language}</code> and <code>/api/translations</code> services, consumed client-side.</p>
+		<br/>
+	</section>
+	<section id="demo">
+		<div class="tabbable tabs-left">
+			<ul class="nav nav-tabs">
+				<li class="active"><a href="#get" data-toggle="tab">Get</a></li>
+				<li><a href="#post" data-toggle="tab">Post</a></li>
+				<li><a href="#put" data-toggle="tab">Put</a></li>
+				<li><a href="#delete" data-toggle="tab">Delete</a></li>
+			</ul>
+			<div class="span7">
+				<div class="tab-content ">
+					@Html.Partial("_TranslationsGetTab")
+					@Html.Partial("_TranslationsPostTab")
+					@Html.Partial("_TranslationsPutTab")
+					@Html.Partial("_TranslationsDeleteTab")
+				</div>
+			</div>
+		</div>
+	</section>
+</div>

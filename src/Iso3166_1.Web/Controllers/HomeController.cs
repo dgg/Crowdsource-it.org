@@ -46,8 +46,45 @@ namespace Iso3166_1.Crowdsource_it.org.Web.Controllers
 		{
 			var countriesResponse = client.Get<Api.Messages.CountriesResponse>(countriesEn.ToString());
 			return (countriesResponse != null && countriesResponse.ResponseStatus == null) ?
-				countriesResponse.Countries.Select(c => new SelectListItem {Value = c.Alpha2_Code, Text = c.Name}) :
+				countriesResponse.Countries.Select(c => new SelectListItem { Value = c.Alpha2_Code, Text = c.Name }) :
 				Enumerable.Empty<SelectListItem>();
+		}
+
+		public ActionResult Translations()
+		{
+			ViewBag.GetUrl = new Uri(Request.Url, "/api/translation/{0}/{1}");
+			
+			return View();
+		}
+
+		public ActionResult Create(Models.Translation model)
+		{
+			using (var client = new JsonServiceClient())
+			{
+				var postTo = new Uri(Request.Url, "/api/translation");
+				var translation = new Api.Messages.Translation
+				{
+					Code = model.Alpha2,
+					Language = model.Language,
+					Data = model.Name
+				};
+				var response = client.Post<Api.Messages.TranslationResponse>(postTo.ToString(), translation);
+			}
+			return Redirect("Translations");
+		}
+
+		public ActionResult Update(Models.Translation model)
+		{
+			using (var client = new JsonServiceClient())
+			{
+				Uri putTo = new Uri(Request.Url, string.Format("/api/translation/{0}/{1}", model.Alpha2, model.Language));
+				var translation = new Api.Messages.Translation
+				{
+					Data = model.Name
+				};
+				var response = client.Put<Api.Messages.TranslationResponse>(putTo.ToString(), translation);
+			}
+			return Redirect("Translations");
 		}
 	}
 }

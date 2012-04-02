@@ -188,6 +188,7 @@
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\pages\Translations.js" />
     <Content Include="Scripts\special\modernizr-2.5.3.js" />
     <Content Include="Scripts\pages\Countries.js" />
     <Content Include="Web.config">
@@ -215,6 +216,21 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Home\_CountriesClientTab.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\Translations.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\_TranslationsGetTab.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\_TranslationsPostTab.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\_TranslationsPutTab.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\_TranslationsDeleteTab.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

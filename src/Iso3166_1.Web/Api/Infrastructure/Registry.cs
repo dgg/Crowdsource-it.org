@@ -37,6 +37,9 @@ namespace Iso3166_1.Crowdsource_it.org.Web.Api.Infrastructure
 			// allow services to declare the ILogFactory dependency instead of depending on the global LogManager
 			container.Register<ILogFactory>(logFactory);
 
+			container.RegisterAutoWiredAs<TranslationRepository, ITranslationRepository>()
+				.ReusedWithin(ReuseScope.None);
+
 			return this;
 		}
 	}
