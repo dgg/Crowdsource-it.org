@@ -114,6 +114,7 @@
     <Reference Include="System.Web.Abstractions" />
     <Reference Include="System.Web.Routing" />
     <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.WebPages, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="WebActivator">
       <HintPath>..\..\packages\WebActivator.1.5\lib\net40\WebActivator.dll</HintPath>
     </Reference>
@@ -135,6 +136,8 @@
     <Compile Include="Api\Messages\Translation.cs" />
     <Compile Include="Api\Messages\TranslationResponse.cs" />
     <Compile Include="Api\TranslationService.cs" />
+    <Compile Include="Controllers\CountriesController.cs" />
+    <Compile Include="Controllers\TranslationsController.cs" />
     <Compile Include="Models\CacheHash.cs" />
     <Compile Include="Api\Infrastructure\ElmahVerboserLogger.cs" />
     <Compile Include="Api\Infrastructure\ElmahVerboserLoggerFactory.cs" />
@@ -170,6 +173,7 @@
     <Compile Include="Models\Translation.cs" />
     <Compile Include="Models\TranslationRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\HtmlHelper.Extensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\Elmah.sdf" />
@@ -202,35 +206,35 @@
     </Content>
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Home\Countries.cshtml" />
+    <Content Include="Views\Countries\Index.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Home\_CountriesServerTab.cshtml" />
+    <Content Include="Views\Countries\_ServerTab.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Home\_CountriesClientTab.cshtml" />
+    <Content Include="Views\Countries\_ClientTab.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Home\Translations.cshtml" />
+    <Content Include="Views\Translations\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Home\_TranslationsGetTab.cshtml" />
+    <Content Include="Views\Translations\_GetTab.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Home\_TranslationsPostTab.cshtml" />
+    <Content Include="Views\Translations\_PostTab.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Home\_TranslationsPutTab.cshtml" />
+    <Content Include="Views\Translations\_PutTab.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Home\_TranslationsDeleteTab.cshtml" />
+    <Content Include="Views\Translations\_DeleteTab.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

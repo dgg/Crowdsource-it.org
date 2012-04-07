@@ -17,8 +17,8 @@
 			</ul>
 			<div class="span7">
 				<div class="tab-content ">
-					@Html.Partial("_CountriesServerTab", Tuple.Create((IEnumerable<SelectListItem>)ViewBag.Countries, (string)@ViewBag.Country))
-					@Html.Partial("_CountriesClientTab")
+					@Html.Partial("_ServerTab", Tuple.Create((IEnumerable<SelectListItem>)ViewBag.Countries, (string)@ViewBag.Country))
+					@Html.Partial("_ClientTab")
 				</div>
 			</div>
 		</div>
