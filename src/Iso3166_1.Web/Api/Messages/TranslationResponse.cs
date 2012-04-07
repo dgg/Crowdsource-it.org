@@ -11,11 +11,22 @@ namespace Iso3166_1.Crowdsource_it.org.Web.Api.Messages
 	{
 		public bool Success { get; set; }
 		public string Uri { get; set; }
+		public Translation Translation { get; set; }
 		public ResponseStatus ResponseStatus { get; set; }
 
 		public static IHttpError LanguageNotSupported()
 		{
 			return new HttpError(new TranslationResponse(), HttpStatusCode.BadRequest, "LanguageNotSupported", "The language needs to be supported");
+		}
+
+		public static IHttpResult Found(Translation message)
+		{
+			return new HttpResult(new TranslationResponse
+			{
+				Success = true,
+				Translation = message
+			},
+			HttpStatusCode.OK);
 		}
 
 		public static IHttpError AlreadyExists()

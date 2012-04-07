@@ -95,6 +95,22 @@ ORDER BY t.Name",
 			return cn.Query<string>("SELECT DISTINCT(Language) FROM Translations");
 		}
 
+		public static Translation Translation(this IDbConnection cn, string alpha2Code, string language)
+		{
+			return cn.Query<Translation>(@"
+SELECT
+	Alpha2,
+	Language,
+	Name
+FROM
+	Staged_Translations
+WHERE
+	Alpha2 = @code AND
+	Language = @lang
+",
+			new { code = alpha2Code, lang = language}).SingleOrDefault();
+		}
+
 		public static void Insert(this IDbConnection cn, string alpha2Code, string language, string translation)
 		{
 			cn.Execute(@"

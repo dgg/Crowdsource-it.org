@@ -13,12 +13,12 @@ namespace Iso3166_1.Crowdsource_it.org.Web.Models
 			_db = db;
 		}
 
-		public bool Exists(string alpha2_Code, CultureInfo language)
+		public Translation Get(string alpha2_Code, CultureInfo language)
 		{
 			using (_db)
 			{
 				_db.Open();
-				bool model = _db.CurrentExists("Staged_Translations", alpha2_Code, language.NeutralName());
+				Translation model = _db.Translation(alpha2_Code, language.NeutralName());
 				return model;
 			}
 		}

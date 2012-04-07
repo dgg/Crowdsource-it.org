@@ -13,12 +13,14 @@ namespace Iso3166_1.Crowdsource_it.org.Web.Api
 		public override object OnGet(Messages.Translation request)
 		{
 			CultureInfo language;
-			bool exists = false;
+			Models.Translation model = null;
 			if (Available.Languages.TryGetValue(request.Language, out language))
 			{
-				exists = Repository.Exists(request.Code, language);
+				model = Repository.Get(request.Code, language);
 			}
-			return exists.ToResponse<Messages.TranslationResponse>();
+			return model != null ? 
+				Messages.TranslationResponse.Found(request.FromModel(model)) :
+				Messages.TranslationResponse.NotFound();
 		}
 
 		// POST is for new entities

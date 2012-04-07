@@ -26,7 +26,7 @@ namespace Iso3166_1.Tests.Api
 
 			Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.NotFound));
 
-			repository.DidNotReceive().Exists(Arg.Any<string>(), Arg.Any<CultureInfo>());
+			repository.DidNotReceive().Get(Arg.Any<string>(), Arg.Any<CultureInfo>());
 		}
 
 		[Test]
@@ -34,7 +34,7 @@ namespace Iso3166_1.Tests.Api
 		{
 			var repository = Substitute.For<ITranslationRepository>();
 			Replacing(repository);
-			repository.Exists(Arg.Any<string>(), Arg.Any<CultureInfo>()).Returns(false);
+			repository.Get(Arg.Any<string>(), Arg.Any<CultureInfo>()).Returns(default(TranslationMdl));
 
 			var client = new HttpClient();
 			HttpResponse response = client.Get(UrlFor("/translation/DK/es"));
@@ -45,15 +45,20 @@ namespace Iso3166_1.Tests.Api
 		[Test]
 		public void GET_Existing_OK()
 		{
+			string code = "DK", language = "es", translation = "Dinamarca";
 			var repository = Substitute.For<ITranslationRepository>();
 			Replacing(repository);
-			repository.Exists("DK", Arg.Is(CultureInfo.GetCultureInfo("en"))).Returns(true);
+			repository.Get(code, Arg.Is(CultureInfo.GetCultureInfo(language))).Returns(
+				new TranslationMdl{Alpha2 = code, Language = language, Name = translation});
 
 			var client = new HttpClient();
 			client.Request.Accept = HttpContentTypes.ApplicationJson;
-			HttpResponse response = client.Get(UrlFor("/translation/DK/en"));
+			HttpResponse response = client.Get(UrlFor("/translation/DK/es"));
 
 			Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.OK));
+			Assert.That(response.DynamicBody.success, Is.True);
+			Assert.That(response.DynamicBody.translation.data, Is.EqualTo(translation));
+
 		}
 
 		[Test]
@@ -81,7 +86,7 @@ namespace Iso3166_1.Tests.Api
 		{
 			var repository = Substitute.For<ITranslationRepository>();
 			Replacing(repository);
-			repository.Exists("DK", Arg.Is(CultureInfo.GetCultureInfo("es"))).Returns(true);
+			repository.Create(Arg.Any<TranslationMdl>()).Returns(false);
 
 			var client = new HttpClient();
 			HttpResponse response = client.Post(UrlFor("/translation"),
@@ -96,6 +101,7 @@ namespace Iso3166_1.Tests.Api
 		{
 			var repository = Substitute.For<ITranslationRepository>();
 			Replacing(repository);
+			repository.Create(Arg.Any<TranslationMdl>()).Returns(true);
 
 			var client = new HttpClient();
 			client.Request.Accept = HttpContentTypes.ApplicationJson;

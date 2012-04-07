@@ -18,7 +18,7 @@ namespace Iso3166_1.Crowdsource_it.org.Web.Api.Messages
 
 			public static Uri Write(Uri baseUrl, string code, string language)
 			{
-				string path = string.Join("/", new[] {Base, code, language});
+				string path = string.Join("/", new[] { Base, code, language });
 				return new Uri(baseUrl, new Uri(path, UriKind.Relative));
 			}
 		}
@@ -30,6 +30,16 @@ namespace Iso3166_1.Crowdsource_it.org.Web.Api.Messages
 				Alpha2 = Code,
 				Language = Language,
 				Name = Data
+			};
+		}
+
+		public Translation FromModel(Models.Translation model)
+		{
+			return new Translation
+			{
+				Code = model.Alpha2,
+				Language = model.Language,
+				Data = model.Name
 			};
 		}
 	}
