@@ -121,5 +121,17 @@ WHERE
 			new { code = alpha2Code, lang = language, name = translation });
 			return recordCount > 0;
 		}
+
+		public static bool Delete(this IDbConnection cn, string alpha2Code, string language)
+		{
+			int recordCount = cn.Execute(@"
+DELETE FROM [Staged_Translations]
+WHERE
+	Alpha2 = @code AND
+	Language = @lang
+",
+			new { code = alpha2Code, lang = language });
+			return recordCount > 0;
+		}
 	}
 }

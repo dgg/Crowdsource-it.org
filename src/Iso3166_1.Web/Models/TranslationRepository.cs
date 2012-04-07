@@ -23,32 +23,45 @@ namespace Iso3166_1.Crowdsource_it.org.Web.Models
 			}
 		}
 
-		public bool Create(Translation translation)
+		public bool Create(Translation toBeCreated)
 		{
 			using (_db)
 			{
 				_db.Open();
-				bool exists = _db.CurrentExists("Staged_Translations", translation.Alpha2, translation.Language);
+				bool exists = _db.CurrentExists("Staged_Translations", toBeCreated.Alpha2, toBeCreated.Language);
 				if (exists)
 				{
 					return false;
 				}
-				_db.Insert(translation.Alpha2, translation.Language, translation.Name);
+				_db.Insert(toBeCreated.Alpha2, toBeCreated.Language, toBeCreated.Name);
 				return true;
 			}
 		}
 
-		public bool Update(Translation translation)
+		public bool Update(Translation toBeUpdated)
 		{
 			bool updated;
 			using (_db)
 			{
 				_db.Open();
 
-				updated = _db.Update(translation.Alpha2, translation.Language, translation.Name);
+				updated = _db.Update(toBeUpdated.Alpha2, toBeUpdated.Language, toBeUpdated.Name);
 			}
 
 			return updated;
+		}
+
+		public bool Delete(Translation toBeDeleted)
+		{
+			bool deleted;
+			using (_db)
+			{
+				_db.Open();
+
+				deleted = _db.Delete(toBeDeleted.Alpha2, toBeDeleted.Language);
+			}
+
+			return deleted;
 		}
 	}
 }

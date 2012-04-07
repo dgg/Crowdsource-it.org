@@ -53,5 +53,14 @@ namespace Iso3166_1.Crowdsource_it.org.Web.Api
 				Messages.TranslationResponse.Updated(RequestContext, request) :
 				Messages.TranslationResponse.NotFound();
 		}
+
+		public override object OnDelete(Messages.Translation request)
+		{
+			var model = request.ToModel();
+			bool deleted = Repository.Delete(model);
+			return deleted ?
+				Messages.TranslationResponse.Deleted() :
+				Messages.TranslationResponse.NotFound();
+		}
 	}
 }

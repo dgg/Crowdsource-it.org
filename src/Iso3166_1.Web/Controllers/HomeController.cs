@@ -52,7 +52,8 @@ namespace Iso3166_1.Crowdsource_it.org.Web.Controllers
 
 		public ActionResult Translations()
 		{
-			ViewBag.GetUrl = new Uri(Request.Url, "/api/translation/{0}/{1}");
+			var urlTemplate = new Uri(Request.Url, "/api/translation/{0}/{1}");
+			ViewBag.GetUrl = urlTemplate;
 			
 			return View();
 		}
@@ -61,14 +62,14 @@ namespace Iso3166_1.Crowdsource_it.org.Web.Controllers
 		{
 			using (var client = new JsonServiceClient())
 			{
-				var postTo = new Uri(Request.Url, "/api/translation");
+				var postUrl = new Uri(Request.Url, "/api/translation");
 				var translation = new Api.Messages.Translation
 				{
 					Code = model.Alpha2,
 					Language = model.Language,
 					Data = model.Name
 				};
-				var response = client.Post<Api.Messages.TranslationResponse>(postTo.ToString(), translation);
+				var response = client.Post<Api.Messages.TranslationResponse>(postUrl.ToString(), translation);
 			}
 			return Redirect("Translations");
 		}
@@ -77,12 +78,22 @@ namespace Iso3166_1.Crowdsource_it.org.Web.Controllers
 		{
 			using (var client = new JsonServiceClient())
 			{
-				Uri putTo = new Uri(Request.Url, string.Format("/api/translation/{0}/{1}", model.Alpha2, model.Language));
+				var putUrl = new Uri(Request.Url, string.Format("/api/translation/{0}/{1}", model.Alpha2, model.Language));
 				var translation = new Api.Messages.Translation
 				{
 					Data = model.Name
 				};
-				var response = client.Put<Api.Messages.TranslationResponse>(putTo.ToString(), translation);
+				var response = client.Put<Api.Messages.TranslationResponse>(putUrl.ToString(), translation);
+			}
+			return Redirect("Translations");
+		}
+
+		public ActionResult Delete(Models.Translation model)
+		{
+			using (var client = new JsonServiceClient())
+			{
+				var deleteUrl = new Uri(Request.Url, string.Format("/api/translation/{0}/{1}", model.Alpha2, model.Language));
+				var response = client.Delete<Api.Messages.TranslationResponse>(deleteUrl.ToString());
 			}
 			return Redirect("Translations");
 		}

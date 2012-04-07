@@ -50,5 +50,15 @@ namespace Iso3166_1.Crowdsource_it.org.Web.Api.Messages
 		{
 			return new HttpError(HttpStatusCode.NotFound, TypeName.Friendly(typeof(Models.Translation)));
 		}
+
+		public static IHttpResult Deleted()
+		{
+			var response = new TranslationResponse
+			{
+				Success = true,
+			};
+
+			return new HttpResult(response, HttpStatusCode.OK);
+		}
 	}
 }
