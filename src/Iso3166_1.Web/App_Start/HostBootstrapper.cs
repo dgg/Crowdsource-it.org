@@ -40,7 +40,7 @@ namespace Iso3166_1.Crowdsource_it.org.Web.App_Start
 
 		public HostBootstrapper Bootstrap(Funq.Container container)
 		{
-			new Registry().Register(container);
+			new SmRegistryAndAdapter().Register(container);
 
 			return this;
 		}

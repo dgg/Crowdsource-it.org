@@ -13,9 +13,9 @@ using ServiceStack.MiniProfiler.Data;
 
 namespace Iso3166_1.Crowdsource_it.org.Web.Api.Infrastructure
 {
-	public class Registry
+	public class FunqRegistry
 	{
-		public Registry Register(Container container)
+		public FunqRegistry Register(Container container)
 		{
 			container.Register<ICacheClient>(new MemoryCacheClient());
 

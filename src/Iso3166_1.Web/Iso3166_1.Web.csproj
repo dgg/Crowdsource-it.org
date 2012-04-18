@@ -99,6 +99,9 @@
     <Reference Include="ServiceStack.Text, Version=3.6.0.3283, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\ServiceStack.Text.3.6.3\lib\net35\ServiceStack.Text.dll</HintPath>
     </Reference>
+    <Reference Include="StructureMap">
+      <HintPath>..\..\packages\structuremap.2.6.3\lib\StructureMap.dll</HintPath>
+    </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Data.SqlServerCe, Version=4.0.0.1, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
@@ -132,6 +135,7 @@
     <Compile Include="Api\Infrastructure\ApplicationFormat.cs" />
     <Compile Include="Api\Infrastructure\Available.cs" />
     <Compile Include="Api\Infrastructure\Reserved.cs" />
+    <Compile Include="Api\Infrastructure\SmRegistryAndAdapter.cs" />
     <Compile Include="Api\ITranslationRepository.cs" />
     <Compile Include="Api\Messages\Translation.cs" />
     <Compile Include="Api\Messages\TranslationResponse.cs" />
@@ -144,7 +148,7 @@
     <Compile Include="Api\Infrastructure\NotFoundResourceFilter.cs" />
     <Compile Include="Api\Infrastructure\RequestExtensions.cs" />
     <Compile Include="Api\Infrastructure\ResponseExtensions.cs" />
-    <Compile Include="Api\Infrastructure\Registry.cs" />
+    <Compile Include="Api\Infrastructure\FunqRegistry.cs" />
     <Compile Include="Api\Infrastructure\TypeName.cs" />
     <Compile Include="Api\LanguageService.cs" />
     <Compile Include="Api\Messages\Countries.cs" />
