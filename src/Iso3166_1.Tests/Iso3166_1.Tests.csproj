@@ -31,8 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EasyHttp">
-      <HintPath>..\..\packages\EasyHttp.1.4.5.0\lib\net40\EasyHttp.dll</HintPath>
+    <Reference Include="EasyHttp, Version=1.4.6.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\EasyHttp.1.4.6.0\lib\net40\EasyHttp.dll</HintPath>
     </Reference>
     <Reference Include="JsonFx">
       <HintPath>..\..\packages\JsonFx.2.0.1106.2610\lib\net40\JsonFx.dll</HintPath>
@@ -43,24 +44,37 @@
     <Reference Include="nunit.framework">
       <HintPath>..\..\packages\NUnit.2.6.0.12054\lib\nunit.framework.dll</HintPath>
     </Reference>
-    <Reference Include="ServiceStack, Version=3.6.3.3307, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="ServiceStack, Version=3.7.3.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\ServiceStack.3.6.3\lib\net35\ServiceStack.dll</HintPath>
+      <HintPath>..\..\packages\ServiceStack.3.7.3\lib\net35\ServiceStack.dll</HintPath>
     </Reference>
-    <Reference Include="ServiceStack.Common, Version=3.6.3.3305, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="ServiceStack.Common, Version=3.7.3.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\ServiceStack.Common.3.6.3\lib\net35\ServiceStack.Common.dll</HintPath>
+      <HintPath>..\..\packages\ServiceStack.Common.3.7.3\lib\net35\ServiceStack.Common.dll</HintPath>
     </Reference>
-    <Reference Include="ServiceStack.Interfaces, Version=3.5.5.3305, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="ServiceStack.Interfaces, Version=3.7.3.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\ServiceStack.Common.3.6.3\lib\net35\ServiceStack.Interfaces.dll</HintPath>
+      <HintPath>..\..\packages\ServiceStack.Common.3.7.3\lib\net35\ServiceStack.Interfaces.dll</HintPath>
     </Reference>
-    <Reference Include="ServiceStack.ServiceInterface, Version=1.0.4462.3310, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="ServiceStack.OrmLite">
+      <HintPath>..\..\packages\ServiceStack.OrmLite.SqlServer.3.6.9\lib\ServiceStack.OrmLite.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.OrmLite.SqlServer">
+      <HintPath>..\..\packages\ServiceStack.OrmLite.SqlServer.3.6.9\lib\ServiceStack.OrmLite.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.RazorEngine">
+      <HintPath>..\..\packages\ServiceStack.3.7.3\lib\net35\ServiceStack.RazorEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Redis">
+      <HintPath>..\..\packages\ServiceStack.Redis.3.7.3\lib\net35\ServiceStack.Redis.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.ServiceInterface, Version=1.0.4490.2209, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\ServiceStack.3.6.3\lib\net35\ServiceStack.ServiceInterface.dll</HintPath>
+      <HintPath>..\..\packages\ServiceStack.3.7.3\lib\net35\ServiceStack.ServiceInterface.dll</HintPath>
     </Reference>
-    <Reference Include="ServiceStack.Text, Version=3.6.0.3283, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\ServiceStack.Text.3.6.3\lib\net35\ServiceStack.Text.dll</HintPath>
+    <Reference Include="ServiceStack.Text, Version=3.6.9.2502, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\ServiceStack.Text.3.6.9\lib\net35\ServiceStack.Text.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

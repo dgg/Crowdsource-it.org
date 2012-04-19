@@ -25,6 +25,8 @@ namespace Iso3166_1.Crowdsource_it.org.Web.Api.Infrastructure
 			}
 		}
 
+		public int Priority { get { return 0; } }
+
 		private void throwUnconventionalResult(object responseDto)
 		{
 			string message = string.Format("The result of a service call must be of type '{0}' but was '{1}'",
