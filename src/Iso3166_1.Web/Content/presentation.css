@@ -1,0 +1,86 @@
+﻿/* @group reset */
+/*table
+{
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+caption, th, td
+{
+	text-align: left;
+	font-weight: normal;
+}
+blockquote:before, blockquote:after, q:before, q:after
+{
+	content: "";
+}
+blockquote, q
+{
+	quotes: "" "";
+}*/
+/* @end */
+
+/* @group utility */
+.hide
+{
+	display: none;
+}
+.contain-overflow
+{
+	overflow: hidden;
+}
+.screen-reader
+{
+	display: block;
+	left: -9999px;
+	position: absolute;
+	top: -9999px;
+}
+.row:after, .clearfix:after
+{
+	content: ".";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}
+/* @end */
+
+/* @group =base */
+/* @group -basic text */
+.slide p, ol, ul, table
+{
+	margin: 0 0 30px;
+}
+.slide ul
+{
+	list-style: square;
+	padding-top: 20px;
+}
+.slide li
+{
+	padding: 20px 0;
+}
+.slide li:first-child
+{
+	padding-top: 0;
+}
+.slide li:last-child
+{
+	border-bottom: none;
+	padding-bottom: 0;
+}
+.slide .tab_1
+{
+	padding-left: 30px;
+}
+.slide .tab_2
+{
+	padding-left: 60px;
+}
+/* @end */
+
+
+/* @end */
+
+/* @end */
+

@@ -221,8 +221,14 @@
     <Content Include="App_Data\Iso3166_1.sdf" />
     <Content Include="Content\bootstrap-responsive.css" />
     <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\images\anug\anug.png" />
     <Content Include="Content\images\glyphicons-halflings-white.png" />
     <Content Include="Content\images\glyphicons-halflings.png" />
+    <Content Include="Content\images\anug\negotiate.jpg" />
+    <Content Include="Content\images\anug\servicestack.png" />
+    <Content Include="Content\images\anug\servicestack-nuget.png" />
+    <Content Include="Content\images\anug\test.jpg" />
+    <Content Include="Content\presentation.css" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -230,8 +236,10 @@
     <Content Include="Scripts\jquery-1.7.2-vsdoc.js" />
     <Content Include="Scripts\jquery-1.7.2.js" />
     <Content Include="Scripts\jquery-1.7.2.min.js" />
+    <Content Include="Scripts\jquery.presentation.js" />
     <Content Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\pages\Anug.js" />
     <Content Include="Scripts\pages\Translations.js" />
     <Content Include="Scripts\special\modernizr-2.5.3.js" />
     <Content Include="Scripts\pages\Countries.js" />
@@ -275,6 +283,36 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Translations\_DeleteTab.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\Anug.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\_01.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\_02.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\_03.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\_04.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\_05.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\_06.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\_07.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\_08.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\_09.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

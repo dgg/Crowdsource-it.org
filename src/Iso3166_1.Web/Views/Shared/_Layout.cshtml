@@ -37,7 +37,7 @@
 					<nav>
 						<div class="nav-collapse">
 							<ul class="nav">
-								@Html.MenuEntry("Home", "Index", "Home")
+								@Html.MenuEntry("ANUG", "Anug", "Home")
 								@Html.MenuEntry("Countries Demo", "Index", "Countries")
 								@Html.MenuEntry("Translations Demo", "Index", "Translations")
 							</ul>
@@ -51,7 +51,9 @@
 	<section class="container">
 		@RenderBody()
 	</section>
-	<footer>	
+	<hr/>
+	<footer>
+		@RenderSection("footer", required: false) 
 	</footer>
 	
 	@Bundles.RenderScripts()
